@@ -19,20 +19,22 @@ function love.load()
   
   CurrentS = sudoku.init()
   AnswerS = sudoku.init()
-  --[[CurrentS = {
-    {0,0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0,0,0}}]]
+  ----[[
+  CurrentS = {
+  {0,0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0,0},
+  {0,0,0,0,0,0,0,0,9}}
+  --]]
 
   love.graphics.setNewFont(16)
   --love.graphics.setColor(0,0,0)
-  love.graphics.setBackgroundColor(255,255,255)
+  love.graphics.setBackgroundColor(0,0,0)
   
   GDT = 0
   DT = 0
@@ -52,6 +54,7 @@ function love.update(dt)
     DT = 0 
     Count = Count + 1
   end
+  CurrentS = sudoku.randomOne(CurrentS)
 end
 --Key pressed
 function love.keypressed(keycode)
@@ -72,6 +75,7 @@ end
 function DebugDraw()
   love.graphics.setColor(0,255,0)
   love.graphics.print("Hey".." "..Count.." "..GDT.." "..DT,0,450)
+  love.graphics.print("Random "..math.random(9),0,470)
   love.graphics.print(Message,0,500)
   love.graphics.setColor(255,255,255)
 end
